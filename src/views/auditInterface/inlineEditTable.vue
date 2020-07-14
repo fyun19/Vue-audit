@@ -5,19 +5,34 @@
       :data="list"
       :element-loading-text="elementLoadingText"
     >
-      <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column label="序号" width="95">
-        <template slot-scope="scope">
-          {{ scope.$index + 1 }}
-        </template>
+      <el-table-column type="selection"></el-table-column>
+      <el-table-column label="接口类型" prop="title">
+        <!-- <template slot-scope="row">
+          {{ row.title }} -->
+        <!-- <el-select v-model="row.title" placeholder="请选择">
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select> -->
+        <!-- </template> -->
       </el-table-column>
-      <el-table-column min-width="300px" label="标题">
+      <el-table-column label="接口名称" prop="interface">
+        <!-- <template slot-scope="scope">
+          {{ scope.$index + 1 }}
+        </template> -->
+      </el-table-column>
+      <el-table-column min-width="80px" prop="title" label="网络名称">
         <template slot-scope="{ row }">
           <template v-if="row.edit">
-            <el-input v-model="row.title" style="width: 300px;" />
+            <el-input v-model="row.title" style="width: 80px;" />
             <el-button
               class="cancel-btn"
               type="warning"
+              style="padding: 9px 2px;"
               @click="cancelEdit(row)"
             >
               取消
@@ -26,7 +41,18 @@
           <span v-else>{{ row.title }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="作者" prop="author"></el-table-column>
+      <el-table-column label="审计标志" prop="">
+        <el-switch
+          v-model="value"
+          active-value="true"
+          inactive-value="false"
+          active-color="#13ce66"
+          inactive-color="#ff4949"
+        >
+        </el-switch>
+      </el-table-column>
+      <el-table-column label="采集策略（个）" prop="author"></el-table-column>
+      <el-table-column label="物理连接" prop="author"></el-table-column>
       <el-table-column align="center" label="操作" width="200">
         <template slot-scope="{ row }">
           <el-button
@@ -59,12 +85,13 @@ export default {
   name: "InlineEditTable",
   data() {
     return {
+      value: true,
       list: null,
       listLoading: true,
       elementLoadingText: "正在加载...",
       queryForm: {
-        pageNo: 1,
-        pageSize: 20,
+        // skip: 0,
+        // limit: 100,
         title: "",
       },
     };
@@ -76,6 +103,8 @@ export default {
     async getList() {
       this.listLoading = true;
       const { data } = await getList(this.queryForm);
+      console.log(data);
+
       this.list = data.map((v) => {
         this.$set(v, "edit", false);
         v.originalTitle = v.title;

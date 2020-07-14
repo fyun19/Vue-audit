@@ -222,6 +222,8 @@ export default {
     async fetchData() {
       this.listLoading = true;
       const { data, totalCount } = await getList(this.queryForm);
+      console.log(data, totalCount);
+
       this.list = data;
       const imageList = [];
       data.forEach((item, index) => {

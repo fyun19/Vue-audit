@@ -15,6 +15,7 @@ module.exports = {
   transpileDependencies: ["vue-echarts", "resize-detector", "zx-layouts"],
   // 默认的接口地址 如果是开发环境和生产环境走vab-mock-server，当然你也可以选择自己配置成需要的接口地址
   baseURL:
+    // "http://10.10.12.18:8000/api/api_v1",
     process.env.NODE_ENV === "development" || process.env.NODE_ENV === "preview"
       ? "vab-mock-server"
       : "http://your.website.com",
@@ -57,7 +58,7 @@ module.exports = {
   //横纵布局 horizontal vertical
   layout: "vertical",
   //是否开启主题配置按钮
-  themeBar: false,
+  themeBar: true,
   //是否显示多标签页
   tagsBar: true,
   //是否显示骨架屏
@@ -77,7 +78,7 @@ module.exports = {
   //是否显示在页面高亮错误
   errorLog: ["development", "test", "production"],
   //是否开启登录拦截
-  loginInterception: true,
+  loginInterception: false,
   //是否开启登录RSA加密
   loginRSA: false,
   //是否依据mock数据生成webstorm HTTP Request请求文件

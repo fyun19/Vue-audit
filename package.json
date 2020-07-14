@@ -1,5 +1,5 @@
 {
-  "name": "vue-admin-beautiful",
+  "name": "vue-audit",
   "version": "1.0.0",
   "private": true,
   "author": "chuzhixin",
@@ -50,7 +50,7 @@
     "js-cookie": "^2.2.1",
     "jsencrypt": "^3.0.0-rc.1",
     "jsonlint": "^1.6.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "maptalks": "^0.47.5",
     "mapv": "^2.0.56",
     "nprogress": "^0.2.0",

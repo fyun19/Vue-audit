@@ -7,6 +7,13 @@ export function getList(data) {
     data,
   });
 }
+// export function getList(params) {
+//   return request({
+//     url: "/interf_audit/",
+//     method: "get",
+//     params,
+//   });
+// }
 
 export function doEdit(data) {
   return request({

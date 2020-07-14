@@ -41,6 +41,9 @@ const mutations = {
   },
 };
 const actions = {
+  setPermissions({ commit }, permissions) {
+    commit("setPermissions", permissions);
+  },
   async login({ commit }, userInfo) {
     const { data } = await login(userInfo);
     const accessToken = data[tokenName];

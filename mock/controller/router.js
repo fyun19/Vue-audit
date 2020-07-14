@@ -51,6 +51,12 @@ const data = [
         component: "views/personnelManagement/roleManagement/index",
         meta: { title: "角色管理" },
       },
+      {
+        path: "menuManagement",
+        name: "MenuManagement",
+        component: "views/personnelManagement/menuManagement/index",
+        meta: { title: "菜单管理", badge: "New" },
+      },
     ],
   },
   {

@@ -308,7 +308,7 @@ export default {
         font-size: $base-font-size-default;
         line-height: 58px;
         color: $base-font-color;
-        background: #f6f4fc;
+        background: #ffffff;
         border: 0;
         caret-color: $base-font-color;
       }

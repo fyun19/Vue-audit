@@ -16,11 +16,11 @@ export const constantRoutes = [
     component: () => import("@/views/login/index"),
     hidden: true,
   },
-  {
-    path: "/register",
-    component: () => import("@/views/register/index"),
-    hidden: true,
-  },
+  // {
+  //   path: "/register",
+  //   component: () => import("@/views/register/index"),
+  //   hidden: true,
+  // },
   {
     path: "/401",
     name: "401",
@@ -48,16 +48,18 @@ export const asyncRoutes = [
         meta: {
           title: "首页",
           icon: "home",
-          affix: true,
+          affix: false,
         },
       },
     ],
   },
 
   {
-    path: "/",
+    path: "/configurationNav",
     component: Layout,
     redirect: "noRedirect",
+    name: "ConfigurationNav",
+    meta: { title: "配置向导", icon: "indent" },
     children: [
       {
         path: "/configurationNav",
@@ -66,25 +68,27 @@ export const asyncRoutes = [
         meta: {
           title: "配置向导",
           icon: "indent",
-          affix: true,
+          affix: false,
         },
       },
     ],
   },
 
   {
-    path: "/",
+    path: "/auditInterface",
     component: Layout,
     redirect: "noRedirect",
+    name: "AuditInterface",
+    meta: { title: "审计接口", icon: "code-branch" },
     children: [
       {
-        path: "comprehensiveTable",
-        name: "comprehensiveTable",
-        component: () => import("@/views/auditInterface/index"),
+        path: "inlineEditTable",
+        name: "InlineEditTable",
+        component: () => import("@/views/auditInterface/inlineEditTable"),
         meta: {
           title: "审计接口",
           icon: "code-branch",
-          affix: true,
+          affix: false,
         },
       },
     ],
@@ -94,7 +98,7 @@ export const asyncRoutes = [
     path: "/networkAudit",
     component: Layout,
     redirect: "noRedirect",
-    name: "networkAudit",
+    name: "NetworkAudit",
     alwaysShow: true,
     meta: { title: "网络审计", icon: "globe" },
     children: [
@@ -360,9 +364,11 @@ export const asyncRoutes = [
   },
 
   {
-    path: "/",
+    path: "/recordStrategy",
     component: Layout,
     redirect: "noRedirect",
+    name: "RecordStrategy",
+    meta: { title: "录播策略", icon: "lock-open" },
     children: [
       {
         path: "/recordStrategy",
@@ -371,7 +377,7 @@ export const asyncRoutes = [
         meta: {
           title: "录波策略",
           icon: "lock-open",
-          affix: true,
+          affix: false,
         },
       },
     ],
@@ -456,6 +462,7 @@ export const asyncRoutes = [
     component: Layout,
     redirect: "noRedirect",
     name: "PersonnelManagement",
+    // alwaysShow: true,
     meta: { title: "用户管理", icon: "users-cog", permissions: ["admin"] },
     children: [
       {
@@ -475,301 +482,301 @@ export const asyncRoutes = [
     ],
   },
 
-  {
-    path: "/vab",
-    component: Layout,
-    redirect: "noRedirect",
-    name: "Vab",
-    alwaysShow: true,
-    meta: { title: "组件", icon: "cloud" },
-    children: [
-      {
-        path: "permissions",
-        name: "Permission",
-        component: () => import("@/views/vab/permissions/index"),
-        meta: {
-          title: "权限控制",
-          permissions: ["admin", "editor"],
-          badge: "New",
-        },
-      },
-      {
-        path: "icon",
-        component: EmptyLayout,
-        redirect: "noRedirect",
-        name: "Icon",
-        meta: {
-          title: "图标",
-          permissions: ["admin"],
-        },
-        children: [
-          {
-            path: "awesomeIcon",
-            name: "AwesomeIcon",
-            component: () => import("@/views/vab/icon/index"),
-            meta: { title: "常规图标" },
-          },
-          {
-            path: "remixIcon",
-            name: "RemixIcon",
-            component: () => import("@/views/vab/icon/remixIcon"),
-            meta: { title: "小清新图标" },
-          },
-          {
-            path: "colorfulIcon",
-            name: "ColorfulIcon",
-            component: () => import("@/views/vab/icon/colorfulIcon"),
-            meta: { title: "多彩图标" },
-          },
-        ],
-      },
-      {
-        path: "table",
-        component: EmptyLayout,
-        redirect: "noRedirect",
-        name: "Table",
-        meta: {
-          title: "表格",
-          permissions: ["admin"],
-        },
-        children: [
-          {
-            path: "comprehensiveTable",
-            name: "ComprehensiveTable",
-            component: () => import("@/views/vab/table/index"),
-            meta: { title: "综合表格" },
-          },
-          {
-            path: "inlineEditTable",
-            name: "InlineEditTable",
-            component: () => import("@/views/vab/table/inlineEditTable"),
-            meta: { title: "行内编辑" },
-          },
-        ],
-      },
-      {
-        path: "map",
-        name: "Map",
-        component: () => import("@/views/vab/map/index"),
-        meta: { title: "地图", permissions: ["admin"], badge: "Pro" },
-      },
-      {
-        path: "webSocket",
-        name: "WebSocket",
-        component: () => import("@/views/vab/webSocket/index"),
-        meta: { title: "webSocket", permissions: ["admin"] },
-      },
-      {
-        path: "form",
-        name: "Form",
-        component: () => import("@/views/vab/form/index"),
-        meta: { title: "表单", permissions: ["admin"] },
-      },
-      {
-        path: "element",
-        name: "Element",
-        component: () => import("@/views/vab/element/index"),
-        meta: { title: "常用组件", permissions: ["admin"] },
-      },
-      {
-        path: "tree",
-        name: "Tree",
-        component: () => import("@/views/vab/tree/index"),
-        meta: { title: "树", permissions: ["admin"] },
-      },
-      {
-        path: "card",
-        name: "Card",
-        component: () => import("@/views/vab/card/index"),
-        meta: { title: "卡片", permissions: ["admin"] },
-      },
+  // {
+  //   path: "/vab",
+  //   component: Layout,
+  //   redirect: "noRedirect",
+  //   name: "Vab",
+  //   alwaysShow: true,
+  //   meta: { title: "组件", icon: "cloud" },
+  //   children: [
+  //     {
+  //       path: "permissions",
+  //       name: "Permission",
+  //       component: () => import("@/views/vab/permissions/index"),
+  //       meta: {
+  //         title: "权限控制",
+  //         permissions: ["admin", "editor"],
+  //         badge: "New",
+  //       },
+  //     },
+  //     {
+  //       path: "icon",
+  //       component: EmptyLayout,
+  //       redirect: "noRedirect",
+  //       name: "Icon",
+  //       meta: {
+  //         title: "图标",
+  //         permissions: ["admin"],
+  //       },
+  //       children: [
+  //         {
+  //           path: "awesomeIcon",
+  //           name: "AwesomeIcon",
+  //           component: () => import("@/views/vab/icon/index"),
+  //           meta: { title: "常规图标" },
+  //         },
+  //         {
+  //           path: "remixIcon",
+  //           name: "RemixIcon",
+  //           component: () => import("@/views/vab/icon/remixIcon"),
+  //           meta: { title: "小清新图标" },
+  //         },
+  //         {
+  //           path: "colorfulIcon",
+  //           name: "ColorfulIcon",
+  //           component: () => import("@/views/vab/icon/colorfulIcon"),
+  //           meta: { title: "多彩图标" },
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       path: "table",
+  //       component: EmptyLayout,
+  //       redirect: "noRedirect",
+  //       name: "Table",
+  //       meta: {
+  //         title: "表格",
+  //         permissions: ["admin"],
+  //       },
+  //       children: [
+  //         {
+  //           path: "comprehensiveTable",
+  //           name: "ComprehensiveTable",
+  //           component: () => import("@/views/vab/table/index"),
+  //           meta: { title: "综合表格" },
+  //         },
+  //         {
+  //           path: "inlineEditTable",
+  //           name: "InlineEditTable",
+  //           component: () => import("@/views/vab/table/inlineEditTable"),
+  //           meta: { title: "行内编辑" },
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       path: "map",
+  //       name: "Map",
+  //       component: () => import("@/views/vab/map/index"),
+  //       meta: { title: "地图", permissions: ["admin"], badge: "Pro" },
+  //     },
+  //     {
+  //       path: "webSocket",
+  //       name: "WebSocket",
+  //       component: () => import("@/views/vab/webSocket/index"),
+  //       meta: { title: "webSocket", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "form",
+  //       name: "Form",
+  //       component: () => import("@/views/vab/form/index"),
+  //       meta: { title: "表单", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "element",
+  //       name: "Element",
+  //       component: () => import("@/views/vab/element/index"),
+  //       meta: { title: "常用组件", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "tree",
+  //       name: "Tree",
+  //       component: () => import("@/views/vab/tree/index"),
+  //       meta: { title: "树", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "card",
+  //       name: "Card",
+  //       component: () => import("@/views/vab/card/index"),
+  //       meta: { title: "卡片", permissions: ["admin"] },
+  //     },
 
-      {
-        path: "betterScroll",
-        name: "BetterScroll",
-        component: () => import("@/views/vab/betterScroll/index"),
-        meta: {
-          title: "滚动侦测",
-          permissions: ["admin"],
-        },
-      },
-      {
-        path: "verify",
-        name: "Verify",
-        component: () => import("@/views/vab/verify/index"),
-        meta: { title: "验证码", permissions: ["admin"] },
-      },
-      {
-        path: "menu1",
-        component: () => import("@/views/vab/nested/menu1/index"),
-        name: "Menu1",
-        alwaysShow: true,
-        meta: {
-          title: "嵌套路由 1",
-          permissions: ["admin"],
-        },
-        children: [
-          {
-            path: "menu1-1",
-            name: "Menu1-1",
-            alwaysShow: true,
-            meta: { title: "嵌套路由 1-1" },
-            component: () => import("@/views/vab/nested/menu1/menu1-1/index"),
+  //     {
+  //       path: "betterScroll",
+  //       name: "BetterScroll",
+  //       component: () => import("@/views/vab/betterScroll/index"),
+  //       meta: {
+  //         title: "滚动侦测",
+  //         permissions: ["admin"],
+  //       },
+  //     },
+  //     {
+  //       path: "verify",
+  //       name: "Verify",
+  //       component: () => import("@/views/vab/verify/index"),
+  //       meta: { title: "验证码", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "menu1",
+  //       component: () => import("@/views/vab/nested/menu1/index"),
+  //       name: "Menu1",
+  //       alwaysShow: true,
+  //       meta: {
+  //         title: "嵌套路由 1",
+  //         permissions: ["admin"],
+  //       },
+  //       children: [
+  //         {
+  //           path: "menu1-1",
+  //           name: "Menu1-1",
+  //           alwaysShow: true,
+  //           meta: { title: "嵌套路由 1-1" },
+  //           component: () => import("@/views/vab/nested/menu1/menu1-1/index"),
 
-            children: [
-              {
-                path: "menu1-1-1",
-                name: "Menu1-1-1",
-                meta: { title: "嵌套路由 1-1-1" },
-                component: () =>
-                  import("@/views/vab/nested/menu1/menu1-1/menu1-1-1/index"),
-              },
-            ],
-          },
-        ],
-      },
-      {
-        path: "magnifier",
-        name: "Magnifier",
-        component: () => import("@/views/vab/magnifier/index"),
-        meta: { title: "放大镜", permissions: ["admin"] },
-      },
-      {
-        path: "echarts",
-        name: "Echarts",
-        component: () => import("@/views/vab/echarts/index"),
-        meta: { title: "图表", permissions: ["admin"] },
-      },
+  //           children: [
+  //             {
+  //               path: "menu1-1-1",
+  //               name: "Menu1-1-1",
+  //               meta: { title: "嵌套路由 1-1-1" },
+  //               component: () =>
+  //                 import("@/views/vab/nested/menu1/menu1-1/menu1-1-1/index"),
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       path: "magnifier",
+  //       name: "Magnifier",
+  //       component: () => import("@/views/vab/magnifier/index"),
+  //       meta: { title: "放大镜", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "echarts",
+  //       name: "Echarts",
+  //       component: () => import("@/views/vab/echarts/index"),
+  //       meta: { title: "图表", permissions: ["admin"] },
+  //     },
 
-      {
-        path: "loading",
-        name: "Loading",
-        component: () => import("@/views/vab/loading/index"),
-        meta: { title: "loading", permissions: ["admin"] },
-      },
-      {
-        path: "player",
-        name: "Player",
-        component: () => import("@/views/vab/player/index"),
-        meta: { title: "视频播放器", permissions: ["admin"] },
-      },
-      {
-        path: "markdownEditor",
-        name: "MarkdownEditor",
-        component: () => import("@/views/vab/markdownEditor/index"),
-        meta: { title: "markdown编辑器", permissions: ["admin"] },
-      },
-      {
-        path: "editor",
-        name: "Editor",
-        component: () => import("@/views/vab/editor/index"),
-        meta: { title: "富文本编辑器", permissions: ["admin"], badge: "New" },
-      },
-      {
-        path: "qrCode",
-        name: "QrCode",
-        component: () => import("@/views/vab/qrCode/index"),
-        meta: { title: "二维码", permissions: ["admin"] },
-      },
-      {
-        path: "backToTop",
-        name: "BackToTop",
-        component: () => import("@/views/vab/backToTop/index"),
-        meta: { title: "返回顶部", permissions: ["admin"] },
-      },
-      {
-        path: "lodash",
-        name: "Lodash",
-        component: () => import("@/views/vab/lodash/index"),
-        meta: { title: "lodash", permissions: ["admin"] },
-      },
-      {
-        path: "imgComparison",
-        name: "ImgComparison",
-        component: () => import("@/views/vab/imgComparison/index"),
-        meta: { title: "图像拖拽比对", permissions: ["admin"] },
-      },
-      {
-        path: "codeGenerator",
-        name: "CodeGenerator",
-        component: () => import("@/views/vab/codeGenerator/index"),
-        meta: { title: "代码生成机", permissions: ["admin"] },
-      },
-      {
-        path: "markdown",
-        name: "Markdown",
-        component: () => import("@/views/vab/markdown/index"),
-        meta: { title: "markdown阅读器", permissions: ["admin"] },
-      },
-      {
-        path: "smallComponents",
-        name: "SmallComponents",
-        component: () => import("@/views/vab/smallComponents/index"),
-        meta: { title: "小组件", permissions: ["admin"] },
-      },
+  //     {
+  //       path: "loading",
+  //       name: "Loading",
+  //       component: () => import("@/views/vab/loading/index"),
+  //       meta: { title: "loading", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "player",
+  //       name: "Player",
+  //       component: () => import("@/views/vab/player/index"),
+  //       meta: { title: "视频播放器", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "markdownEditor",
+  //       name: "MarkdownEditor",
+  //       component: () => import("@/views/vab/markdownEditor/index"),
+  //       meta: { title: "markdown编辑器", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "editor",
+  //       name: "Editor",
+  //       component: () => import("@/views/vab/editor/index"),
+  //       meta: { title: "富文本编辑器", permissions: ["admin"], badge: "New" },
+  //     },
+  //     {
+  //       path: "qrCode",
+  //       name: "QrCode",
+  //       component: () => import("@/views/vab/qrCode/index"),
+  //       meta: { title: "二维码", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "backToTop",
+  //       name: "BackToTop",
+  //       component: () => import("@/views/vab/backToTop/index"),
+  //       meta: { title: "返回顶部", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "lodash",
+  //       name: "Lodash",
+  //       component: () => import("@/views/vab/lodash/index"),
+  //       meta: { title: "lodash", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "imgComparison",
+  //       name: "ImgComparison",
+  //       component: () => import("@/views/vab/imgComparison/index"),
+  //       meta: { title: "图像拖拽比对", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "codeGenerator",
+  //       name: "CodeGenerator",
+  //       component: () => import("@/views/vab/codeGenerator/index"),
+  //       meta: { title: "代码生成机", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "markdown",
+  //       name: "Markdown",
+  //       component: () => import("@/views/vab/markdown/index"),
+  //       meta: { title: "markdown阅读器", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "smallComponents",
+  //       name: "SmallComponents",
+  //       component: () => import("@/views/vab/smallComponents/index"),
+  //       meta: { title: "小组件", permissions: ["admin"] },
+  //     },
 
-      {
-        path: "upload",
-        name: "Upload",
-        component: () => import("@/views/vab/upload/index"),
-        meta: { title: "上传", permissions: ["admin"] },
-      },
-      {
-        path: "excel",
-        component: EmptyLayout,
-        redirect: "noRedirect",
-        name: "Excel",
-        meta: {
-          title: "Excel",
-          permissions: ["admin"],
-        },
-        children: [
-          {
-            path: "exportExcel",
-            component: () => import("@/views/vab/excel/exportExcel"),
-            name: "ExportExcel",
-            meta: { title: "导出Excel" },
-          },
-          {
-            path: "exportSelectedExcel",
-            component: () => import("@/views/vab/excel/exportSelectExcel"),
-            name: "ExportSelectedExcel",
-            meta: { title: "导出选中行" },
-          },
-          {
-            path: "exportMergeHeaderExcel",
-            component: () => import("@/views/vab/excel/exportMergeHeaderExcel"),
-            name: "ExportMergeHeaderExcel",
-            meta: { title: "导出合并" },
-          },
-          {
-            path: "uploadExcel",
-            component: () => import("@/views/vab/excel/uploadExcel"),
-            name: "UploadExcel",
-            meta: { title: "上传Excel" },
-          },
-        ],
-      },
-      {
-        path: "sticky",
-        name: "Sticky",
-        component: () => import("@/views/vab/sticky/index"),
-        meta: { title: "sticky吸附", permissions: ["admin"] },
-      },
-      {
-        path: "log",
-        name: "Log",
-        component: () => import("@/views/vab/errorLog/index"),
-        meta: { title: "错误日志模拟", permissions: ["admin"] },
-      },
-      {
-        path: "more",
-        name: "More",
-        component: () => import("@/views/vab/more/index"),
-        meta: { title: "更多组件", permissions: ["admin"] },
-      },
-    ],
-  },
+  //     {
+  //       path: "upload",
+  //       name: "Upload",
+  //       component: () => import("@/views/vab/upload/index"),
+  //       meta: { title: "上传", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "excel",
+  //       component: EmptyLayout,
+  //       redirect: "noRedirect",
+  //       name: "Excel",
+  //       meta: {
+  //         title: "Excel",
+  //         permissions: ["admin"],
+  //       },
+  //       children: [
+  //         {
+  //           path: "exportExcel",
+  //           component: () => import("@/views/vab/excel/exportExcel"),
+  //           name: "ExportExcel",
+  //           meta: { title: "导出Excel" },
+  //         },
+  //         {
+  //           path: "exportSelectedExcel",
+  //           component: () => import("@/views/vab/excel/exportSelectExcel"),
+  //           name: "ExportSelectedExcel",
+  //           meta: { title: "导出选中行" },
+  //         },
+  //         {
+  //           path: "exportMergeHeaderExcel",
+  //           component: () => import("@/views/vab/excel/exportMergeHeaderExcel"),
+  //           name: "ExportMergeHeaderExcel",
+  //           meta: { title: "导出合并" },
+  //         },
+  //         {
+  //           path: "uploadExcel",
+  //           component: () => import("@/views/vab/excel/uploadExcel"),
+  //           name: "UploadExcel",
+  //           meta: { title: "上传Excel" },
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       path: "sticky",
+  //       name: "Sticky",
+  //       component: () => import("@/views/vab/sticky/index"),
+  //       meta: { title: "sticky吸附", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "log",
+  //       name: "Log",
+  //       component: () => import("@/views/vab/errorLog/index"),
+  //       meta: { title: "错误日志模拟", permissions: ["admin"] },
+  //     },
+  //     {
+  //       path: "more",
+  //       name: "More",
+  //       component: () => import("@/views/vab/more/index"),
+  //       meta: { title: "更多组件", permissions: ["admin"] },
+  //     },
+  //   ],
+  // },
   // {
   //   path: "/mall",
   //   component: Layout,
